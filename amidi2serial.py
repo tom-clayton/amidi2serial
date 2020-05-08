@@ -1,9 +1,13 @@
 
 import alsaseq
 import serial
+import sys
 
-synth = serial.Serial(port="/dev/ttyACM3", baudrate= 31250, timeout=1)
-#synth = serial.Serial(port="/dev/ttyACM4", baudrate=31250, timeout=1)
+if len(sys.argv) < 2:
+    print("Enter serial port as command line argument.")
+    sys.exit()
+
+synth = serial.Serial(port=sys.argv[1], baudrate= 31250, timeout=1)
 alsaseq.client("serial", 1, 0, False)
 channel = 0
 

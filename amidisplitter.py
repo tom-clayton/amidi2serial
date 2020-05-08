@@ -1,7 +1,11 @@
 
 import alsaseq
+import sys
 
-SPLIT_KEY = 60 #C2
+if len(sys.argv) > 1:
+    split_key = sys.argv[1]
+else:
+    split_key = 60 # Default, C4
 
 alasseq.client('Keyboard Splitter', 1, 1, False)
 
@@ -11,7 +15,7 @@ alasseq.client('Keyboard Splitter', 1, 1, False)
 while True:
     if alsaseq.inputpending():
         event = list(alsaseq.input())
-        if (event[0] == 6 or event[0] == 7) and event[7][1] > SPLIT_KEY:
+        if (event[0] == 6 or event[0] == 7) and event[7][1] > split_key:
             event[7][0] += 1
         alsaseq.output(event)
             
