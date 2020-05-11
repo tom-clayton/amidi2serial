@@ -37,8 +37,11 @@ argument. Value can be negative.
 
 Prints note on and note off messages to command line in hexidecimal.
 
+# amiditimer
+
+Times a midi message round trip in milliseconds.
+
 To come...
 
-Midi timer
 Midi clock from beat
 
