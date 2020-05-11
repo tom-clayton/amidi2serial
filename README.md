@@ -7,6 +7,7 @@ Requires python module alsaseq, which requires libasound-dev.
 For Debian:
 
 sudo apt install libasound-dev
+
 pip3 install alsaseq
 
 Apps need manually connecting with aconnect, once running.
