@@ -9,6 +9,8 @@ For Debian:
 sudo apt install libasound-dev
 pip3 install alsaseq
 
+Apps need manually connecting with aconnect, once running.
+
 # amidi2serial
 
 Links an alsa midi output to a serial port.
@@ -19,19 +21,23 @@ Requires pyserial:
 
 pip3 install pyserial
 
-Needs manually connecting with aconnect, once running.
-
 # amidisplitter
 
-Increments the channel of incoming midi note messages if they are above a set note.
+Increments the channel of incoming midi note messages if they are above 
+a set note. Note is set with a command line argument of the midi note 
+number, else it will default to B3 (59).
 
-Note is set with a command line argument of the midi note number, else it will default to C4 (60).
+# amidioffset
 
-Needs manually connecting with aconnect, once running.
+Shifts midi note by a set value. Value is set with a command line 
+argument. Value can be negative.
+
+# amidimonitor
+
+Prints note on and note off messages to command line in hexidecimal.
 
 To come...
 
-Midi note offset
 Midi timer
 Midi clock from beat
 

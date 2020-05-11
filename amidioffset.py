@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 
-# amidisplitter.py - Tom Clayton
+# amidioffset.py - Tom Clayton
 
 # Connect input and out put to alsa midi streams and this program will
-# increment the midi channnel of notes received by one for every note 
-# above note x. x is set with a command line argument. x defaults to 
-# B3 (59).
+# shift midi notes received by x notes. x is set with a command line 
+# argument. x can be negative to shift down.
 
 import alsaseq
 import sys
 
 if len(sys.argv) > 1:
-    split_key = int(sys.argv[1])
+    offset = int(sys.argv[1])
 else:
-    split_key = 59 # Default, <-B3 C4->
+	print ("Enter offset as command line argument.")
+	sys.exit()
 
-alsaseq.client('Keyboard Splitter', 1, 1, False)
+alsaseq.client('Midi Offset', 1, 1, False)
 
 # alsaseq event:
 # (type, flags, tag, queue, time stamp, source, destination, data)
@@ -25,10 +25,11 @@ alsaseq.client('Keyboard Splitter', 1, 1, False)
 while True:
     if alsaseq.inputpending():
         event = list(alsaseq.input())
-        if (event[0] == 6 or event[0] == 7) and event[7][1] > split_key:
+        if (event[0] == 6 or event[0] == 7):
             data = list(event[7])
-            data[0] += 1
+            data[1] += offset 
             event[7] = tuple(data)
-            #event[7][0] += 1
         alsaseq.output(event)
+            
+        
 
