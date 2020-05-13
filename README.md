@@ -41,7 +41,9 @@ Prints note on and note off messages to command line in hexidecimal.
 
 Times a midi message round trip in milliseconds.
 
-To come...
+# amidiclock
 
-Midi clock from beat
+Ouptuts midi clocck pulses for the given bpm. Bpm is set with command
+line argument.
+
 

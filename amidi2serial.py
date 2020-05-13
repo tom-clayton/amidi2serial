@@ -21,7 +21,7 @@ alsaseq.client("Midi to Serial", 1, 0, False)
 # alsaseq event:
 # (type, flags, tag, queue, time stamp, source, destination, data)
 
-# data = (channel, note, velocity, ??, ??)
+# data = (channel, note, velocity, start, duration)
 
 while True:
     if alsaseq.inputpending():
